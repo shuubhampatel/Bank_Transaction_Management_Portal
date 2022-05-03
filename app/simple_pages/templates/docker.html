@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- main row 1 -->
+    <div class="row">
+        <!-- col 1 -->
+        <h4>Lets read about Docker</h4>
+        <div class="col-8">
+            <p>Docker is an open-source platform for building, deploying, and managing containerized apps. It enables
+                programmers to bundle applications into containers, which are standardized executable components that
+                integrate application source code with OS libraries and dependencies required to run that code in any
+                environment. Basically, it solves the common and most important problem called <b>"This application
+                    Works on My Computer but Not Theirs."</b></p>
+            <p>
+            <ul>
+                <li><b>containers: </b>a container is a running instance of an image, so by using that, we can run our
+                    image on any system and server. And it also automates the configuration and deployment of a given
+                    application very easily. So containers make deploying distributed apps easier, and they're becoming
+                    more popular as companies move to cloud-native development and hybrid multi-cloud setups. 
+                </li>
+                <li><b>Images: </b>images are nothing more than layers of software that are layered on top of each
+                    other. For example, in one layer is Ubuntu, and we have application code in the above layer, so this
+                    whole thing is combined into a layer that composes our final image that we use to deploy and create
+                    containers from it.
+                </li>
+                <li><b>Docker Hub:</b>The Docker Hub is a cloud-based repository in which Docker users and partners can
+                    create, test, store, and distribute container images. A user can use Docker Hub to access public,
+                    open-source image repositories as well as create their own private repositories.</p>
+                </li>
+            </ul>
+            <h5>Docker Commands:</h5>
+            <ul>
+                <li><b>docker images </b> : it will give total list of images in your system</li>
+                <li><b>docker ps </b>: it will Give total number of running containers in your system</li>
+                <li><b>docker stop containerID</b>: it will stop container of given containerID</li>
+                <li><b>docker rm [containerID]</b>: This command is used to delete a stopped container</li>
+                <li><b>docker pull [imageName/ repoPath] </b>:it will pull an image or repository from registry
+                </li>
+                <li><b>docker build -t docker_username/repo_name: tag . </b>: it will build docker image (below I
+                    explained in detail)
+                </li>
+                <li><b>docker run -dp PORT:PORT docker_username/repo_name: tag </b>: it will run you builded image on
+                    given port
+                </li>
+                <li><b>docker push docker_username/repo_name: tag </b>: it will push image to given docker repo.</li>
+                <li><b> docker commit</b>: it will use to commit file changes into new image.</li>
+                <li><b> docker system prune -a </b>: Remove all unused containers, networks, images (both dangling and
+                    unreferenced), and optionally, volumes.
+                </li>
+                <li><b>docker login </b>: login to docker cloud
+                </li>
+            </ul>
+            </br>
+            <h5>How to Start the Project:</h5>
+            <p>To start the project, we have to create a file called Dockerfile (explanation is below how to and what to
+                include in this file), a Docker compose file, and requirement files to add package layer in our image in
+                the root directory and then we have run the docker file by command <b> docker-compose</b> up to check
+                and verify
+                our image work locally on localhost and if everything looks good then we can create one repo to docker
+                hub and we can build image to push it docker hub to do so following are the command.<br><br>To build
+                image
+                we can type this command <b>docker build -t docker_username/repo_name: tag . (Note there is a (dot) at
+                    the end </b>
+                Because it tells that docker should look for the docker file in current directory.)
+                now your docker image is build and ready to push it to your docker hub repo.
+                before pushing do<b> docker run -dp 80:5000 docker_username/repo_name: tag </b>run that just built image
+                so
+                after that it will show your app in localhost:5000 because in docker file you mentioned 5000 port as
+                host and port 80 for docker container.Now you can push it to docker hub by following command:<br>
+                <b>docker push docker_username/repo_name: tag</b><br><br>
+                Now if your image is pushed in public repo then anyone can pull it and if you want to modify then do it
+                and apply docker commit
+                command and follow the same steps to push changed image to docker hub and give new tag to image before
+                pushing it.
+            </p>
+            </br>
+
+            <h5>About dockerfile:</h5>
+            <p>Dockerfile is a simple text file that consists of instructions to build Docker images.The specific
+                commands you can use in a dockerfile are:
+            <ul>
+                - FROM - Creates a layer from the ubuntu:18.04<br>
+                - PULL - Adds files from your Docker repository<br>
+                - RUN - Builds your container<br>
+                - CMD - Specifies what command to run within the container<br>
+            </ul>
+            <p>Mentioned below is an example of the dockerfile with the important commands:</p>
+            <p> FROM ubuntu:18.04<br>
+                PULL. /file<br>
+                RUN make /file<br>
+                CMD python /file/file.py<br>
+            </p>
+
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/docker1.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/docker2.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/docker3.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="Image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+    <!-- main row 1 end-->
+
+    <style>
+        body {
+            font-size: 120%;
+        }
+
+        .navbar-nav > .active > a {
+            color: black;
+        }
+
+    </style>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- main row 1 -->
+    <div class="row">
+        <!-- col 1 -->
+        <h4>Lets read about CI/CD</h4>
+        <div class="col-8">
+            <p>A CI/CD pipeline is a series of steps that must be performed in order to deliver a new version of
+                software. Continuous integration and continuous delivery(CI/CD) pipelines are a practice focused on
+                improving software delivery using either a DevOps or site reliability engineering (SRE) approach.<br>
+
+                A CI/CD pipeline introduces monitoring and automation to improve the process of application development,
+                particularly at the integration and testing phases as well as during delivery and deployment. Although
+                it is possible to manually execute each of the steps of a CI/CD pipeline, the true value of CI/CD
+                pipelines is realized through automation.
+            </p>
+            <h5>Elements of a CI/CD pipeline</h5>
+            <p>
+                The steps that form a CI/CD pipeline are distinct subsets of tasks grouped into what is known as a
+                pipeline stage. Typical pipeline stages include:
+            <ul>
+                <li><b>Build:</b>The stage where the application is compiled.</li>
+                <li><b>Test:</b>The stage where code is tested. Automation here can save both time and effort.
+                </li>
+                <li><b>Release:</b> The stage where the application is delivered to the repository.</li>
+                <li><b>Deploy</b>In this stage code is deployed to production.</li>
+
+            </ul>
+            </p>
+            </p> to use github actions first i have to wite workflow file to tell when this actions is going to hit so
+            in this project i have 2 workflow file which is production and development.
+            <ul>
+                <li> at the time of <b>pushing </b>to master branch my production workflow will trigger and first run
+                    ubuntu server then it will start to install all the dependecies and next is building new image in
+                    given repo to docker Hub. and at the and after building new image it will deploy to heroku.
+                </li>
+                <li>at the time of<b> pull request </b>on master branch at that time my development workflow will
+                    trigger and in that development workflow first it checks all test and then it will deploy to heroku
+                </li>
+                </p>
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/cicd1.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/cicd2.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/cicd3.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="Image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+    <!-- main row 1 end-->
+
+    <style>
+        body {
+            font-size: 120%;
+        }
+
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+
+
+{% endblock %}

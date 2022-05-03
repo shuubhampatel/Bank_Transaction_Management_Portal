@@ -1,3 +1,45 @@
 body {
-font-size: 200%;
+    font-size: 120%;
+}
+
+.carouselsizeset {
+    width: 500pt;
+    height: 250pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbarcustomcolor {
+    background-color: darkslateblue;
+}
+
+.navbarcustomfontcolor {
+    color: azure;
+}
+
+.navbar-nav > .active > a {
+    color: black;
+}
+
+.rightside {
+
+    text-align: right;
+}
+
+.leftside {
+
+    text-align: left;
+}
+
+.centerfooter {
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card {
+    transition: transform 0.2s ease;
+    size: auto;
 }

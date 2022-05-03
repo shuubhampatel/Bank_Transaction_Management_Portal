@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- main row 1 -->
+    <div class="row">
+        <!-- col 1 -->
+        <h4>Lets read about Git</h4>
+        <div class="col-8">
+            <p>So GIT is a free and open-source version control system (VCS) that allows software developers to
+                collaborate and keep a complete history of their work, as well as a distributed version control system
+                (DVCS). you are wondering if Git is a DVCS (distributed), so what is the difference between a
+                centralized version control system and a distributed one? Let’s first compare it to the general concept
+                and then continue with the operations/terms/commands of Git, such as branches, merges, commits, tags,
+                and repositories in Git.</p>
+            <p>
+            <ul>
+                <li>Centralized version control is easier to learn than distributed. If you are a beginner, you’ll have
+                    to remember all the commands for all the operations in DVCS, and working on DVCS might be confusing
+                    initially
+                </li>
+                <li>DVCS is faster than CVCS because you don’t need to communicate with the remote server for each and
+                    every command. You do everything locally, which gives you the benefit of working faster than CVCS.
+                </li>
+                <li>DVCS has the biggest advantage in that it allows you to work offline and gives flexibility. You have
+                    the entire history of the code on your own hard drive, so all the changes you make will be on your
+                    own server or to your own repository, which doesn’t require an internet connection, but this is not
+                    the case with CVCS.
+                </li>
+                <li>Merge conflicts with other developers' code are less in DVCS. Because every developer works on their
+                    own piece of code, Merge conflicts are more common in CVCS in comparison to DVCS.
+                </li>
+                <li> If the main server goes down or crashes in DVCS, you can still get the backup or entire history of
+                    the code from your local repository or server where the full revision of the code is already saved.
+                    This is not the case in the case of CVCS. There is just a single remote server that has the entire
+                    code history.
+                </li>
+            </ul>
+            </p>
+            <h4>So below are the Git operations/terms/commands:</h4>
+            <p>
+            <ul>
+                <li><h5>Repositories:</h5> Git Repositories contain different files for different versions of a project.
+                    These files are imported into the local server as we talked about DVCS above, so a VCS is used to
+                    create these versions and store them in a specific place. We call it a repository. To initialize
+                    your repository in your project, type the command <b>git init </b>and start adding your files.
+                </li>
+
+                <li><h5>Branches:</h5> A branch is a repository version that differs from the main working project. Most
+                    contemporary version control systems include this feature. There can be multiple branches in a Git
+                    project. These branches offer a graphical representation of your changes. When you want to add a new
+                    feature or fix a bug, you generate a new branch to summarize your modifications
+                </li>
+
+                <li><h5>commit:</h5> So this Git command, as its name suggests, commits your work. That means saving
+                    your work in repositories, but as we talked about before, to commit anything, you have to add those
+                    files, and then you can commit it. Otherwise, if you do commit directly, it will tell you nothing to
+                    commit. So every time you make a change, you have to tell it to the commit command, which will work
+                    or execute. At the time of execution, you have to give one flag with a comment, and that flag could
+                    be -m or -a, so it represents the only modified file, and -a represents all files you can use
+                    according to your needs. The commit command looks like this: <b> git commit -m "this is a
+                        comment" </b> and
+                    yes, before this you have to add those changes, so for that you need to execute the add command,
+                    which is <b>git add.</b></li>
+
+                <li><h5>merge: </h5>git merge is a command that joins two development histories together.That is, if you
+                    are currently working on two different branches and want to combine all of your work from both
+                    branches into one, git merge is a useful procedure to use.So to perform a merge, you need to last
+                    commit, then you need to checkout to that branch and then you have to execute the merge command.
+                    That would be <b> git merge [commit id] </b>
+                </li>
+
+                <li><h5>Tags:</h5> are specific reference points in git history. Git tags are used to capture a specific
+                    point in history that is further used to point to a released version. You can create a tag with git
+                    <b>tag <-a feature1.1> </b>(also known as annotated tags)
+                </li>
+
+            </ul>
+
+            </p>
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/git1.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="Diffrence betwwen CVCS & DVCS">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/git2.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="Repositories">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/git3.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="Git lifecycle">
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+    <!-- main row 1 end-->
+
+    <style>
+        body {
+            font-size: 120%;
+        }
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+
+{% endblock %}

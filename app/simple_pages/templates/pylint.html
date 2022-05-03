@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+
+        <!-- col 1 -->
+        <h4>Lets read about Pylint</h4>
+        <div class="col-8">
+            <p>Pylint is a static code analysis tool written in Python for the purpose of analysis. It may check for
+                programming flaws, implement coding standards best practices, discover code violations, and advise
+                reworking. It is totally customisable by the user and has built-in specific routines for controlling
+                particular errors and alarms within the user's code.</p>
+            <p> to install pylint on windows or mac machine according to documentation you should write<br> <code>pip
+                install pylint</code></p>
+            <p>Pylint will display a number of messages as it analyzes the code and it can also be used for displaying
+                some statistics about the number of warnings and errors found in different files. The messages are
+                classified under various categories such as errors and warnings.
+
+            </p>
+            <p>As you can see in image1 that shows that in this application i have made test for every page including
+                operations by doing that i can make sure that my page is currently opening and there will be no issue
+                after deploying to development and here you can see after starting session it gives testfile path pytest
+                and pylint version as summery here need of operation test to make sure that defined
+                calculator methods are giving proper answer or not. in the image2 you can see that here if i
+                divide by zero then it will generate an error message otherwise it will pass the test.<br> here you can
+                see in image3 that in the divide operation test i have checked both conditions one as normal condition
+                and second one as a divide by zero to check our functions are working properly or not while giving any
+                numbers. </p>
+
+
+            <h4>Following are the General definitions:</h4>
+            <p>
+            <ul>
+                <li><h5>OOP terms with definitions:</h5>Object-Oriented Programming (OOP) uses "objects" to model
+                    realworld objects. Object-Oriented Programming (OOP) consist of following some important concepts
+                    referred to as the OOPS concepts.<a href=/oops>Please click here to learn this terms by
+                        Calculator Program examples</a><br>
+                    <ul>
+                        <li><b>Encapsulation</b>:Wrapping up of a data and functions into single unit is known as
+                            encapsulation.
+                        </li>
+                        <br>
+
+                        <li><b>Inheritance</b>: Inheritance is the process/ Mechanism, by which class can acquire the
+                            properties and methods of another class. in simple words deriving a new class from an old
+                            class is called inheritance.
+                        </li>
+                        <br>
+
+                        <li><b>Polymorphism</b>: Polymorphism allows a single name to be used for more than one related
+                            purpose.The concept of polymorphism is characterized by the idea of 'one interface, multiple
+                            methods'.
+                        </li>
+                        <br>
+
+                        <li><b>Abstraction</b>: Abstraction is a concept in object-oriented programming that "shows"
+                            just the most important features while "hiding" the others. The basic goal of abstraction is
+                            to keep people aside from unneeded elements.
+                        </li>
+                    </ul>
+                </li>
+
+                <li><h5>Instantiation:</h5> Object creation in Python is a two-step process. first step is creating
+                    objects and second is initialization the object. Python uses <code>__new__</code> method for object
+                    creation and <code>__init__</code> for initialization.<br> During the object instantiation process
+                    if the class does not define these methods, they are inherited from the <code>object</code>base
+                    class.
+                </li>
+                <li><h5>Object:</h5>An object is an instance of a class.An object is a component of a program that knows
+                    how to interact with other pieces of the program.
+                </li>
+                <li><h5>Class:</h5>A class is a template that specifies the attributes and behavior of things or
+                    objects.A class is a prototype from which objects are created. It defines attributes and methods.
+                </li>
+                <li><h5>Namespace:</h5> It defines a scope for the identifiers that are used in a program. in other
+                    words we can think of a namespace as a dictionary in which the keys are the object names and the
+                    values are the objects themselves. Each key-value pair maps a name to its corresponding object.
+                </li>
+                <li><h5>Constructor:</h5> Constructors are generally used for instantiating an object. The task of
+                    constructors is to initialize(assign values) to the data members of the class when an object of the
+                    class is created. in python <code style="color: black">__init__()</code> method is called the
+                    constructor. <br>Syntax of
+                    constructor declaration :<br><code style="color: black">def __init__(self): <br>&nbsp;&nbsp;&nbsp;#
+                        body of the constructor</code></li>
+                <li><h5>Fixture:</h5> Fixtures are functions, which will run before each test function to which it is
+                    applied. Fixtures are used to feed some data to the tests such as database connections, URLs to test
+                    and some sort of input data. But Point to note is fixture only works with one test file but if you
+                    want to use that fixture in another test file. To make a fixture available to multiple test files,
+                    we have to define the fixture function in a file called <b><code
+                            style="color: black">conftest.py.</code></b>
+                </li>
+                <li><h5>Type hint:</h5> Python is a dynamically typed language, which means you never have to explicitly
+                    indicate what kind of types variable has. But in some cases, dynamic typing can lead to some bugs
+                    that are very difficult to debug and in those cases, Type Hints will useful. <br><code
+                            style="color: black">def greeting(name: str) -> str: <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'Hello ' + name</code><br> in above code you can see
+                    that greeting method will take variable as string and <code>--> str</code> shows it also return as
+                    string.
+                </li>
+                <li><h5>Type cast:</h5> Python defines type conversion functions to directly convert one data type to
+                    another which is useful in day-to-day and competitive programming.There are two types of Type
+                    Conversion in Python:
+                    <ul>
+                        <li>Implicit Type Conversion</li>
+                        <li>Explicit Type Conversion</li>
+                    </ul>
+                </li>
+                <li><h5>Unit test:</h5> Check that your code is working as expected by creating and running unit tests.
+                    It's called unit testing because you break down the functionality of your program into discrete
+                    testable behaviors that you can test as individual units.
+                </li>
+                <li><h5>Static:</h5> Static means, that the member is on a class level rather on the instance level.
+                    change in a static variable in one instance of the class, the change will affect its value in all
+                    other instances.
+                </li>
+                <li><h5>Instance method:</h5> Used to access or modify the object state. If we use instance variables
+                    inside a method, such methods are called instance methods.
+                </li>
+                <li><h5>Static method:</h5> A static method is also a method that is bound to the class and not the
+                    object of the class. A static method can’t access or modify the class state.
+                </li>
+                <li><h5>Static property:</h5> "Static" properties and methods belong to a class, rather than to an
+                    instance of a class, that means they are shared, in a sense, across the entire project.
+                </li>
+                <li><h5>Overview of SOLID:</h5> SOLID principles
+                    SOLID is an acronym that stands for five object-oriented design principles that help you
+                    make the software more understandable, easier to maintain, and easier to extend.<a href=/solid>Please
+                        click here to learn more about this principles</a>
+                    <ul>
+                        <li><b>S</b>ingle-responsibility</li>
+                        <li><b>O</b>pen-closed</li>
+                        <li><b>L</b>iskov Substitution</li>
+                        <li><b>I</b>nterface Segregation</li>
+                        <li><b>D</b>ependency Inversion</li>
+                    </ul>
+
+                </li>
+                <li><h5>Design Patterns:</h5> Design patterns are common solutions to challenging issues in
+                    software development. They're similar to pre-made blueprints that we can use to fix a repeated
+                    design
+                    issue in the code.<br>It have many benefits that overcome problem in software design. it defines a
+                    common langauge that helps team to communicate more efficiently.<br>
+                    Patterns are classified in 3 groups by their intent.
+                    <ul>
+                        <li>Creational patterns</li>
+                        <li>Structural patterns</li>
+                        <li>Behavioral patterns</li>
+                    </ul>
+                </li>
+
+
+            </ul>
+
+            </p>
+        </div>
+        <!-- col 1 end -->
+
+        <!-- col 2 for images -->
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/pylint1.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="Pylint image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/pylint2.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="Pylint image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/pylint3.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="Pylint image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+            <!-- row 4 image4 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/pylint4.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="Pylint image 4">
+            </div>
+            <!-- row 4 image4 end -->
+
+            <!-- row 5 for refer -->
+            <div class="row mb-3">
+                <a href="https://pylint.pycqa.org/en/latest/" class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for pylint content</a>
+            </div>
+            <!-- row 5 for refer end -->
+
+            <!-- row 6 for refer -->
+            <div class="row mb-3">
+                <a href="https://www.geeksforgeeks.org/" class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for General definitions</a>
+            </div>
+            <!-- row 6 for refer end -->
+
+            <!-- row 7 for refer -->
+            <div class="row mb-3">
+                <a href="https://refactoring.guru/design-patterns" class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for Design Patterns</a>
+            </div>
+            <!-- row 7 for refer end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+    <!-- main row 1 end-->
+ <style>
+        body {
+            font-size: 120%;
+        }
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+
+
+{% endblock %}

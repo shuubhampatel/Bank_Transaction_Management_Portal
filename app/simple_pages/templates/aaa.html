@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="nav-item active">
+        <!-- main row 1 -->
+        <div class="row">
+            <!-- col 1 -->
+            <h4>Lets read about AAA testing</h4>
+            <div class="col-8">
+                <br>Arrange, Act, Assert is the term for the three logical components that we should consider while
+                creating our tests.<br><br>
+                <p>- We set up our environment, i.e. everything we need to run our test code, in the <b>Arrange</b>
+                    section.
+                    This includes setting up objects, dependencies, and all of the test case's data.<br>
+                    - We run the test in the <b>Act</b> section by invoking the functions we built up in the previous
+                    stage.<br>- Finally, in the <b>Assert</b> section, we specify the test's pass criteria, which will
+                    fail it if they are
+                    not met, i.e. if the test's actual findings differ from what we expected.</p><br>
+                <p>from Image1 we easily tell how this 3 terms is used in test division method. First there is the test
+                    definition, docstring and arrangement.<br> In the middle line its a most important part is called
+                    Act.<br> Final line is called Assertions. </p>
+                <h5>Let's understand more about Arrange, Act, Assert by test code example image1 </h5>
+                <p>
+                <pre class="border-top border-bottom">def test_calculation_division_get_result_method():
+    """Testing the Calculator Division"""
+    tuple_list = (1, 2) # <--- Arrange
+    calculation = Division.create(tuple_list) # <--- Act
+    assert calculation.get_result() == 0.5 # <--- Assert</pre>
+                <ul>
+                    <li><b>Arrange:</b>As we discuss above in the Arrange part have definition, docsting and
+                        Arrangement. so here we setting up our as Arrange we created tuple_list.
+                    </li>
+                    <br>
+                    <li><b>Act:</b> This part is very important part here we gave instruction what this test do by
+                        invoking the functions we built up in the previous stage. so here in the above code from the
+                        given tuple list it will call method <code>create()</code> from class Division and do division.
+                    </li>
+                    <br>
+                    <li><b>Assert:</b> Finally assertion will check the returned result from <code>get_result()</code>
+                        method with 0.5 to check our division
+                        method/ functionally in our app is working properly or not. If not then at the time of checking
+                        it will pass the message as this test is expecting result as a 0.5.
+                    </li>
+                    </p>
+                </ul>
+                <br>
+
+                <h5>Why testing is important? :</h5>
+                <p>A test is a procedure that exercises a behavior to determine if the behavior functions correctly.
+                    There are several different kinds of tests, like unit tests, integration tests, or end-to-end tests,
+                    but all functional tests do the same basic thing: they try something and report PASS or FAIL.
+                    <br><br>
+                    Testing provides an empirical feedback loop for development. That’s how testing keeps us safe.
+                    With tests, we know when things break. Without tests, coding can be dangerous. We don’t want to
+                    deploy big ol’ bugs! In big applications without tests, developers have to invest a lot of time in
+                    finding the bug, but with the help of unit tests,we can easily identify that the test is expecting
+                    this output and our code is giving a different result, so the developer can directly focus on that
+                    part directly.
+                </p>
+                </br>
+
+
+            </div>
+            <!-- col 1 end -->
+            <!-- col 2 for images -->
+
+            <div class="col">
+                <!-- row 1 image1 -->
+                <div class="row mb-3">
+                    <img src="{{ url_for('static', filename='images/aaa1.png') }}"
+                         class="img-fluid mb-5 border border-dark"
+                         alt="AAA Image 1">
+                </div>
+                <!-- row 1 image1 end -->
+                <!-- row 2 image2 -->
+
+                <div class="row mb-3">
+                    <img src="{{ url_for('static', filename='images/aaa2.png') }}"
+                         class="img-fluid mb-5 border border-dark"
+                         alt="AAA Image 2">
+                </div>
+                <!-- row 2 image2 end -->
+                <!-- row 3 image3 -->
+
+                <div class="row mb-3">
+                    <img src="{{ url_for('static', filename='images/aaa3.png') }}"
+                         class="img-fluid mb-5 border border-dark"
+                         alt="AAA Image 3">
+                </div>
+                <!-- row 3 image3 end -->
+
+                <!-- row 4 for refer -->
+                <div class="row mb-3">
+                    <a href="https://jamescooke.info/arrange-act-assert-pattern-for-python-developers.html"
+                       class="img-fluid mb-5 border border-dark"
+                       alt="pylint reference">Reference for AAA testing</a>
+                </div>
+                <!-- row 4 for refer end -->
+
+                <!-- row 5 for refer -->
+                <div class="row mb-3">
+                    <a href="https://jaguhiremath62.medium.com/arrange-act-and-assert-aaa-pattern-in-unit-testing-b2d261aaef6a"
+                       class="img-fluid mb-5 border border-dark"
+                       alt="pylint reference">Reference for Arrange, Act and Assert (AAA) Pattern</a>
+                </div>
+                <!-- row 5 for refer end -->
+
+                <!-- row 6 for refer -->
+                <div class="row mb-3">
+                    <a href="https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/"
+                       class="img-fluid mb-5 border border-dark"
+                       alt="pylint reference">Reference for How to write good test & importance of Test</a>
+                </div>
+                <!-- row 6 for refer end -->
+
+            </div>
+            <!-- col 2 for images end-->
+
+        </div>
+        <!-- main row 1 end-->
+
+    </div>
+
+    <style>
+        body {
+            font-size: 120%;
+        }
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+
+
+{% endblock %}
