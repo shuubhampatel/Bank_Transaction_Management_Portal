@@ -49,3 +49,6 @@ setuptools
 wheel
 Flask-CORS
 Faker
+python-dotenv
+sqlalchemy-serializer
+Flask-Mail

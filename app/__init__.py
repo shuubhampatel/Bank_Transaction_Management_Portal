@@ -1,23 +1,18 @@
 """A simple flask web app"""
-import logging
-import os
-from logging.handlers import RotatingFileHandler
 
 import flask_login
 from flask import Flask
 from flask_bootstrap import Bootstrap5
+from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
-from app.context_processors import utility_text_processors
-from app.error_handlers import error_handlers
 
-
+from app.auth import auth
 from app.cli import create_database
-from app.db import db
+from app.context_processors import utility_text_processors
+from app.db import db, database
 from app.db.models import User
+from app.error_handlers import error_handlers
 from app.simple_pages import simple_pages
-from app.db import database
-
-# from flask_cors import CORS
 
 login_manager = flask_login.LoginManager()
 
@@ -25,6 +20,12 @@ login_manager = flask_login.LoginManager()
 def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
+    if app.config["ENV"] == "production":
+        app.config.from_object("app.config.ProductionConfig")
+    elif app.config["ENV"] == "development":
+        app.config.from_object("app.config.DevelopmentConfig")
+    elif app.config["ENV"] == "testing":
+        app.config.from_object("app.config.TestingConfig")
 
     # https://flask-login.readthedocs.io/en/latest/  <-login manager
     login_manager.init_app(app)
@@ -37,12 +38,20 @@ def create_app():
 
     # these load functions with web interface
     app.register_blueprint(simple_pages)
-    app.context_processor(utility_text_processors)
+    app.register_blueprint(auth)
+    app.register_blueprint(database)
+    # these load functionality without a web interface
     app.register_blueprint(error_handlers)
-
-
+    app.context_processor(utility_text_processors)
     # add command function to cli commands
     app.cli.add_command(create_database)
+    # app.cli.add_command(create_log_folder)
+    db.init_app(app)
+    api_v1_cors_config = {
+        "methods": ["OPTIONS", "GET", "POST"],
+    }
+    CORS(app, resources={"/api/*": api_v1_cors_config})
+    # Run once at startup:
     return app
 
 
