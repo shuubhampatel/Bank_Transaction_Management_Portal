@@ -7,6 +7,8 @@ import flask_login
 from flask import Flask
 from flask_bootstrap import Bootstrap5
 from flask_wtf.csrf import CSRFProtect
+from app.context_processors import utility_text_processors
+
 
 from app.cli import create_database
 from app.db import db
@@ -34,6 +36,8 @@ def create_app():
 
     # these load functions with web interface
     app.register_blueprint(simple_pages)
+    app.context_processor(utility_text_processors)
+
     # add command function to cli commands
     app.cli.add_command(create_database)
     return app
