@@ -13,6 +13,8 @@ from app.db import db, database
 from app.db.models import User
 from app.error_handlers import error_handlers
 from app.simple_pages import simple_pages
+from app.songs import songs
+
 
 login_manager = flask_login.LoginManager()
 
@@ -43,6 +45,7 @@ def create_app():
     # these load functionality without a web interface
     app.register_blueprint(error_handlers)
     app.context_processor(utility_text_processors)
+    app.register_blueprint(songs)
     # add command function to cli commands
     app.cli.add_command(create_database)
     # app.cli.add_command(create_log_folder)
