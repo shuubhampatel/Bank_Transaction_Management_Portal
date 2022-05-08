@@ -85,7 +85,7 @@
                                     {% if current_user.is_admin %}
                                         <li><a class="dropdown-item" href="{{ url_for("auth.browse_users") }}">User
                                             Mgmt</a></li>
-                                        <li><a class="dropdown-item" href="{{ url_for("songs.songs_browse") }}">Song
+                                        <li><a class="dropdown-item" href="{{ url_for("transactions.transactions_browse") }}">Transaction
                                             Mgmt</a></li>
                                     {% endif %}
                                     <li><a class="dropdown-item" href="{{ url_for("auth.logout") }}">Logout</a></li>
