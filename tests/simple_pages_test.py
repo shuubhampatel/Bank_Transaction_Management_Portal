@@ -79,7 +79,7 @@ def test_cicd_page(client):
 
 
 def test_about_page(client):
-    """This makes the ci/cd page"""
+    """This makes the about page"""
     response = client.get("/about")
     assert response.status_code == 200
     assert b"Introduction about My Self" in response.data
