@@ -39,17 +39,26 @@ def test_user_login(application, client):
         password = 'test1234'
         user = User.query.filter_by(email=email).first()
         assert user is None
-
         response = client.post("/register", data=dict(email=email, password=password, confirm=password),
                                follow_redirects=True)
-
         user = User.query.filter_by(email=email).first()
         assert user is not None
-        assert response.status_code == 200
-
         response = client.post("/login", data=dict(email=email, password=password, confirm=password),
                                follow_redirects=True)
-
         user = User.query.filter_by(email=email).first()
         assert user is not None
         assert response.status_code == 200
+
+
+def test_dashboard_page(client, application):
+    """This makes the dashboard page"""
+    with application.app_context():
+        email = 'test@test.com'
+        password = 'test1234'
+        response = client.post("/register", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        response = client.post("/login", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        response = client.get("/dashboard")
+        assert response.status_code == 200
+        assert b"Welcome:" in response.data
