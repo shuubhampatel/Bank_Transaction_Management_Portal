@@ -12,7 +12,7 @@ from app.db.models import Transaction
 from app.transactions.forms import csv_upload
 
 transactions = Blueprint('transactions', __name__,
-                  template_folder='templates')
+                         template_folder='templates')
 
 
 @transactions.route('/transactions', methods=['GET'], defaults={"page": 1})
@@ -50,7 +50,7 @@ def transactions_upload():
             bal = current_user.balance
         log.info(bal)
         list_of_transactions = []
-        with open(filepath) as file:
+        with open(filepath, encoding='utf-8-sig') as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
                 list_of_transactions.append(Transaction(row['AMOUNT'], row['TYPE']))
