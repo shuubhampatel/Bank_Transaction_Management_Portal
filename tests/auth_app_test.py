@@ -82,3 +82,23 @@ def test_dashboard_buttons(client, application):
         assert response.status_code is not 400
         assert response.status_code is 200
 
+
+def test_denying_dashbaord(client, application):
+    """This test to check while entering wrong username/ Password"""
+    with application.app_context():
+        email = 'test@test.com'
+        password = 'test1234'
+        wrong_email = 'abc@abc.com'
+        wrong_password = 'testtest'
+        user = User.query.filter_by(email=email).first()
+        assert user is None
+        response = client.post("/register", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        user = User.query.filter_by(email=email).first()
+        assert user is not None
+        response = client.post("/login", data=dict(email=wrong_email, password=wrong_password, confirm=password),
+                               follow_redirects=True)
+        user = User.query.filter_by(email=wrong_email).first()
+        assert user is None
+        response = client.get("/dashboard")
+        assert response.status_code is not 200
