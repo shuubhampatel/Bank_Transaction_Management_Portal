@@ -61,4 +61,24 @@ def test_dashboard_page(client, application):
                                follow_redirects=True)
         response = client.get("/dashboard")
         assert response.status_code == 200
-        assert b"Welcome:" in response.data
+        assert b'Welcome: test@test.com' in response.data
+
+
+def test_dashboard_buttons(client, application):
+    """This makes the dashboard buttons test"""
+    with application.app_context():
+        email = 'test@test.com'
+        password = 'test1234'
+        response = client.post("/register", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        response = client.post("/login", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        response = client.get("/dashboard")
+        assert b'<button class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>Copy</span></button>'
+        assert b'<button class="dt-button buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>CSV</span></button>'
+        assert b'<button class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>Excel</span></button>'
+        assert b'<button class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>PDF</span></button>'
+        assert b'<button class="dt-button buttons-print" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span>Print</span></button>'
+        assert response.status_code is not 400
+        assert response.status_code is 200
+
