@@ -1,5 +1,5 @@
 """This tests are for auth pages test"""
-from app import User
+from app.db.models import User
 
 
 def test_register_page(client):
@@ -102,3 +102,14 @@ def test_denying_dashbaord(client, application):
         assert user is None
         response = client.get("/dashboard")
         assert response.status_code is not 200
+
+
+def test_manage_profile(client, application):
+    """Test for manage profile page"""
+    with application.app_context():
+        response = client.get("/profile")
+        assert response.status_code == 200
+        assert b"Manage Profile" in response.data
+        response = client.post("/profile", data=dict(form='about test'),
+                               follow_redirects=True)
+        assert response.status_code is 200
