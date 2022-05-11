@@ -1,13 +1,35 @@
 from datetime import datetime
 
-from werkzeug.security import check_password_hash, generate_password_hash
-from app.db import db
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
+from sqlalchemy_serializer import SerializerMixin
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from app.db import db
+
+
+class Transaction(db.Model, SerializerMixin):
+    __tablename__ = 'transactions'
+    serialize_only = ('AMOUNT', 'TYPE')
+    id = db.Column(db.Integer, primary_key=True)
+    amount = db.Column(db.String(300), nullable=True, unique=False)
+    type = db.Column(db.String(300), nullable=True, unique=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = relationship("User", back_populates="transactions", uselist=False)
+
+    def __init__(self, amount, type):
+        self.amount = amount
+        self.type = type
+
+    def serialize(self):
+        return {
+            'amount': self.amount,
+            'type': self.type,
+        }
 
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(300), nullable=False, unique=True)
@@ -16,6 +38,9 @@ class User(UserMixin, db.Model):
     registered_on = db.Column('registered_on', db.DateTime)
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
     is_admin = db.Column('is_admin', db.Boolean(), nullable=False, server_default='0')
+    transactions = db.relationship("Transaction", back_populates="user", cascade="all, delete")
+    balance = db.Column(db.Integer, nullable=True)
+    inital_balance = 0
 
     # `roles` and `groups` are reserved words that *must* be defined
     # on the `User` model to use group- or role-based authorization.
@@ -30,6 +55,12 @@ class User(UserMixin, db.Model):
 
     def is_active(self):
         return True
+
+    def set_inital_balance(self, inital_balance):
+        self.inital_balance = inital_balance
+
+    def set_balance(self, balance):
+        self.balance = balance
 
     def is_anonymous(self):
         return False

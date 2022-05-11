@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- main row 1 -->
+    <div class="row">
+        <!-- col 1 -->
+        <h4>Lets read about SOLID</h4>
+        <div class="col-8">
+            <p>SOLID is an acronym that stands for five object-oriented design principles that
+                help you make the software more understandable, easier to maintain, and easier to extend.Below are the
+                examples from Calculator app about sold principles to understand by examples.
+            <ul>
+                <li><b>S</b>ingle-responsibility: As the name suggests, single responsibility means a call should have
+                    only one job. In our calculator app, in the operation and calculation names, you can see that we
+                    have separate classes for each operation or calculation, which shows the single responsibility
+                    principle in the calculator app.<br>
+                    <pre class="border-top border-bottom" style="height: 300px">class Division:
+    """This is the Division class"""
+
+    @staticmethod
+    def divide(value_1, value_2):
+        """ This is the Divide method"""
+        try:
+            return value_1 / value_2
+        except ZeroDivisionError:
+            return "you can't divide by zero"
+
+
+class Multiplication:
+    """ This is the Multiplication class"""
+
+    @staticmethod
+    def multiply(value_1, value_2):
+        """ This is the add method"""
+        return value_1 * value_2
+
+
+class Addition:
+    """ This is the addition class"""
+
+    @staticmethod
+    def add(value_1, value_2):
+        """ This is the add method"""
+        return value_1 + value_2
+
+
+class Subtraction:
+    """ This is the subtraction class"""
+
+    @staticmethod
+    def subtract(value_1, value_2):
+        """ This is the add method"""
+        return value_1 - value_2
+</pre>
+                </li>
+                <li><b>O</b>pen-closed: This principle tells us function should open for extension but close for
+                    modifications. so in the calculator class we are coding to a interface named calculations for
+                    specific class and also in the calculations interface we are importing another interface called
+                    operations and all the operation will perform there. so basically Coding to an interface is an
+                    integral part of SOLID so that's how open-closed principle used in calculator app we are extending
+                    our interfaces and performing operations and those operations methods are closed for any
+                    modifications they just take values and return the results.
+                    <pre class="border-top border-bottom">class Division:
+    """This is the Division class"""
+
+    @staticmethod
+    def divide(value_1, value_2):
+        """ This is the Divide method"""
+        try:
+            return value_1 / value_2
+        except ZeroDivisionError:
+            return "you can't divide by zero"</pre>
+                    in below code <code>get_result()</code> method will get called from interface calculations so we can
+                    extend or do changes in the Division class in calculations interface but we can't do any change in
+                    Division class from
+                    operations interface.<br><br>
+                    <pre class="border-top border-bottom">class Division(Calculation):
+    """Division calculation object"""
+
+    def get_result(self):
+        """get the Division results"""
+        result = 1.0
+        for value in self.values:
+            result = Div.divide(result, value)
+        return result</pre>
+                </li>
+                <li><b>L</b>iskov Substitution: A sub-class must be able to take the place of its super-class. When
+                    extending a class, we should keep in mind that to pass subclass objects in place of parent
+                    class objects without disrupting client code. The goal of this principle is to ensure that a
+                    sub-class can correctly take the place of its super-class.<br>
+                </li>
+                <li><b>I</b>nterface Segregation: Make fine grained interfaces that are client specific Clients should
+                    not be forced to depend upon interfaces or methods that they do not use. in our calculator app we
+                    have class Multiplication and that class in not depended on any other class so basically this
+                    principle is kind of same as Single-responsibility but here insted of method here interface do one
+                    and only one thing.
+                    <pre class="border-top border-bottom">class Multiplication:
+    """ This is the Multiplication class"""
+
+    @staticmethod
+    def multiply(value_1, value_2):
+        """ This is the add method"""
+        return value_1 * value_2</pre>
+                </li>
+                <li><b>D</b>ependency Inversion: Entities must depend on abstractions, not on concretions. That means
+                    the high-level module must not depend on the low-level module, but they should depend on
+                    abstractions. according to our calculator app operations module is the low-level module because it
+                    will perform operations after important task such as object creation, converting tuples to list
+                    because thease are the high level modules so according to dependency Inversion Principle operations
+                    module is depend upon calculations/ high level module.
+                </li>
+            </ul>
+            </p>
+
+            <h5>Design Patterns:</h5> Design patterns are common solutions to challenging issues in
+            software development. They're similar to pre-made blueprints that we can use to fix a repeated
+            design
+            issue in the code.<br>It have many benefits that overcome problem in software design. it defines a
+            common langauge that helps team to communicate more efficiently.<br>
+            Patterns are classified in 3 groups by their intent.
+            <ul>
+                <li>Creational patterns: These patterns provide various object creation mechanisms, which increase
+                    flexibility and reuse of existing code.
+                </li>
+                <li>Structural patterns: These patterns explain how to assemble objects and classes into larger
+                    structures while keeping these structures flexible and efficient.
+                </li>
+                <li>Behavioral patterns: These patterns are concerned with algorithms and the assignment of
+                    responsibilities between objects.
+                </li>
+                <h5>Factory method:</h5>
+                <pre class="border-bottom border-top">class Calculation:
+    """ calculation abstract base class"""
+
+    # pylint: disable=too-few-public-methods
+    def __init__(self, tuple_list: tuple):
+        """ constructor method"""
+        self.values = Calculation.convert_args_to_tuple_of_float(tuple_list)
+
+    <mark>@classmethod</mark>
+    <mark>def create(cls, tuple_list: tuple):</mark>
+        <mark>""" factory method"""</mark>
+        <mark>return cls(tuple_list)</mark>
+</pre>
+                Here above <code>create()</code> method called as a factory method and to use of this function to return
+                a instance of class the you are referring to and the example of that is given below where instance is
+                passes to variable name calculation for calling get_result() method to get result of calculation.<br>
+                <pre class="border-bottom border-top"> class Calculator:
+    """ This is the default result property"""
+
+    @staticmethod
+    def divide(tuple_list):
+        """ This is the divide method"""
+        <mark>calculation = Division.create(tuple_list)</mark>
+        <mark>return calculation.get_result()</mark></pre>
+            </ul>
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/solid1.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="SOLID Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/solid2.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="SOLID Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/solid3.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="SOLID Image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+            <!-- row 4 image4 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/solid4.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="SOLID Image 4">
+            </div>
+            <!-- row 4 image4 end -->
+
+            <!-- row 5 image5 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/solid5.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="SOLID Image 5">
+            </div>
+            <!-- row 5 image5 end -->
+
+            <!-- row 6 image6 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/solid6.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="SOLID Image 6">
+            </div>
+            <!-- row 6 image6 end -->
+
+            <!-- row 7 for refer -->
+            <div class="row mb-3">
+                <a href="https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design"
+                   class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for Python SOLID Principles</a>
+            </div>
+            <!-- row 7 for refer end -->
+
+            <!-- row 8 for refer -->
+            <div class="row mb-3">
+                <a href="https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/"
+                   class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for Python SOLID Principles 2</a>
+            </div>
+            <!-- row 8 for refer end -->
+
+            <!-- row 9 for refer -->
+            <div class="row mb-3">
+                <a href="https://www.educative.io/blog/solid-principles-oop-c-sharp"
+                   class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for Python SOLID Principles 3</a>
+            </div>
+            <!-- row 9 for refer end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+    <!-- main row 1 end-->
+    <style>
+        body {
+            font-size: 120%;
+        }
+
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+
+
+{% endblock %}
+

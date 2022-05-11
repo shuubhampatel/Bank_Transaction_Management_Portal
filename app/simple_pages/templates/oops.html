@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- main row 1 -->
+    <div class="row">
+        <!-- col 1 -->
+        <h4>Lets read about OOPs concepts</h4>
+        <div class="col-8">
+            <p>Object-Oriented Programming (OOP) uses "objects" to model realworld objects.
+                Object-Oriented Programming (OOP) consist of following some important concepts referred to as
+                the OOPS concepts.
+            <h4> Lets understand this concept with the calculator program</h4>
+
+            <ul>
+                <li><b>Encapsulation</b>:In general terms Wrapping up of a data and functions into single unit is known
+                    as encapsulation.Here are the code example and we can clearly see that when we create Instance of
+                    class Division it will bind and store all the data and functionally to the calculation variable to
+                    perform get_result() method.
+                    <br>
+                    <pre class="border-top border-bottom">from calculator.calculations import Addition, Subtraction, Multiplication, Division
+
+
+class Calculator:
+    """ This is the default result property"""
+
+    @staticmethod
+    def divide(tuple_list):
+        """ This is the divide method"""
+        <mark>calculation = Division.create(tuple_list)</mark>
+        return calculation.get_result()</pre>
+                    <br> Here method <code>create()</code> is wrapped in one unit so above is a one example of
+                    Encapsulation from calculator app.
+                </li>
+                <br>
+
+                <li><b>Inheritance</b>: Inheritance is the process/ Mechanism, by which class can acquire the
+                    properties and methods of another class. in simple words deriving a new class from an old
+                    class is called inheritance.Let's understand more with code so below is the code example that shows
+                    Inheritance in calculator app.<br>
+                    <pre class="border-top border-bottom" style="height: 300px">class Calculation:
+    """ calculation abstract base class"""
+
+    # pylint: disable=too-few-public-methods
+    def __init__(self, tuple_list: tuple):
+        """ constructor method"""
+        self.values = Calculation.convert_args_to_tuple_of_float(tuple_list)
+
+    @classmethod
+    def create(cls, tuple_list: tuple):
+        """ factory method"""
+        return cls(tuple_list)
+
+    @staticmethod
+    def convert_args_to_tuple_of_float(tuple_list):
+        """ standardize values to list of floats"""
+        list_values_float = []
+        for item in tuple_list:
+            list_values_float.append(float(item))
+        return tuple(list_values_float)
+
+
+class Division(Calculation):
+    """Division calculation object"""
+
+    def get_result(self):
+        """get the Division results"""
+        result = 1.0
+        for value in self.values:
+            result = Div.divide(result, value)
+                        return result</pre>
+                    <br> Above code shows <code>Division</code> class is inherited from class
+                    <code>Calculation</code> that means new Division class can have access to all the methods and data
+                    from Calculation class. Here we are currently using values from tuples actually those values
+                    are now converted to List from <code>__init__</code> method
+                    of parent class<code>Calculation</code>(because before performing any operations we need to convert
+                    to List data structure because we can't modify values in tuples). So that's how Inheritance works in
+                    calculator app.
+                </li>
+                <br>
+
+                <li><b>Polymorphism</b>: Polymorphism allows a single name to be used for more than one related
+                    purpose.The concept of polymorphism is characterized by the idea of 'one interface, multiple
+                    methods'. Let's understand with example from calculator app. so below is a code from calculation
+                    namesapce and according to code it have two classes Division and Multiplication with same method
+                    name
+                    <code>get_result()</code> but both will work differently. so this is called Polymorphism.
+                    and we can call it by Instantiating object of Division or Multiplication class.
+                    <pre class="border-top border-bottom" style="height: 300px">class Division(Calculation):
+    """Division calculation object"""
+
+    def get_result(self):
+        """get the Division results"""
+        result = 1.0
+        for value in self.values:
+            result = Div.divide(result, value)
+        return result
+
+
+class Multiplication(Calculation):
+    """multiplication calculation object"""
+
+    def get_result(self):
+        """get the multiplication results"""
+        result = 1.0
+        for value in self.values:
+            result = Mult.multiply(result, value)
+        return result</pre>
+                    <br>
+                    So in the below code we are calling the method <code>get_result()</code> from Multiplication class
+                    in the Calculator class by creating object "calculation". so thats how Polymorphism works in this
+                    calculator app.<br>
+                    <pre class="border-top border-bottom">class Calculator:
+    """ This is the default result property"""
+
+    @staticmethod
+    def multiply(tuple_list):
+        """ This is the multiply method"""
+        calculation = Multiplication.create(tuple_list)
+        return calculation.get_result()
+</pre>
+                </li>
+                <br>
+
+                <li><b>Abstraction</b>: Abstraction is a concept in object-oriented programming that "shows"
+                    just the most important features while "hiding" the others. The basic goal of abstraction is
+                    to keep people aside from unneeded elements. Below code gives example of Abstraction by "hiding"
+                    features from calculations class. so in the hightlighted line you can see that we are importing
+                    methods <code>Addition, Subtraction, Multiplication, Division</code> from calculations class that
+                    means we shows just <code>divide, add, subtract, multiply</code> methods and we are hiding hows the
+                    calculation works.
+                    <pre class="border-top border-bottom" style="height: 300px">""" This is the Calculator Class"""
+<mark>from calculator.calculations import Addition, Subtraction, Multiplication, Division</mark>
+
+
+class Calculator:
+    """ This is the default result property"""
+
+    @staticmethod
+    def divide(tuple_list):
+        """ This is the divide method"""
+        calculation = Division.create(tuple_list)
+        return calculation.get_result()
+
+    @staticmethod
+    def add(tuple_list):
+        """ This is the add method"""
+        # Call the static method add to return the sum and set it to the calculator result property
+        calculation = Addition.create(tuple_list)
+        return calculation.get_result()
+
+    @staticmethod
+    def subtract(tuple_list):
+        """ This is the subtract method"""
+        calculation = Subtraction.create(tuple_list)
+        return calculation.get_result()
+
+    @staticmethod
+    def multiply(tuple_list):
+        """ This is the multiply method"""
+        calculation = Multiplication.create(tuple_list)
+        return calculation.get_result()
+</pre>
+                    So
+                    below code is from calculations class and here also we are using Abstraction by hiding all
+                    operations by importing methods in Calculations class and that's how Abstraction used in Calculator
+                    app.<br>
+                    <pre class="border-top border-bottom" style="height: 300px">
+<mark>from calculator.operations import Addition as Add, Subtraction as Sub, Multiplication as Mult, Division as Div</mark>
+
+class Division(Calculation):
+    """Division calculation object"""
+
+    def get_result(self):
+        """get the Division results"""
+        result = 1.0
+        for value in self.values:
+            result = Div.divide(result, value)
+        return result
+
+
+class Multiplication(Calculation):
+    """multiplication calculation object"""
+
+    def get_result(self):
+        """get the multiplication results"""
+        result = 1.0
+        for value in self.values:
+            result = Mult.multiply(result, value)
+        return result
+
+
+class Addition(Calculation):
+    """ calculation addition class"""
+
+    def get_result(self):
+        """get the addition results"""
+        sum_of_values = 0.0
+        for value in self.values:
+            sum_of_values = Add.add(value, sum_of_values)
+        return sum_of_values
+
+
+class Subtraction(Calculation):
+    """subtraction calculation object"""
+
+    def get_result(self):
+        """get the subtraction results"""
+        difference_of_values = 0.0
+        for value in self.values:
+            difference_of_values = Sub.subtract(difference_of_values, value)
+        return difference_of_values</pre>
+                </li>
+            </ul>
+            </p>
+
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/oops.png') }}" class="img-fluid mb-5 border border-dark"
+                     alt="OOPs image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/oops1.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="OOPs image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/oops2.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="OOPs image 3">
+            </div>
+            <!-- row 3 image3 end -->
+            <!-- row 4 image4  -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/oops3.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="OOPs image 4">
+            </div>
+            <!-- row 4 image4 end -->
+
+            <!-- row 5 image5  -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/oops4.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="OOPs image 5">
+            </div>
+            <!-- row 5 image5 end -->
+
+            <!-- row 6 image6  -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/oops5.png') }}"
+                     class="img-fluid mb-5 border border-dark"
+                     alt="OOPs image 6">
+            </div>
+            <!-- row 6 image6 end -->
+
+            <!-- row 7 for refer -->
+            <div class="row mb-3">
+                <a href="https://www.geeksforgeeks.org/python-oops-concepts/" class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for Python OOPs Concepts</a>
+            </div>
+            <!-- row 7 for refer end -->
+
+            <!-- row 8 for refer -->
+            <div class="row mb-3">
+                <a href="https://www.programiz.com/python-programming/object-oriented-programming"
+                   class="img-fluid mb-5 border border-dark"
+                   alt="pylint reference">Reference for Python Object Oriented Programming</a>
+            </div>
+            <!-- row 8 for refer end -->
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+    <!-- main row 1 end-->
+
+    <style>
+        body {
+            font-size: 120%;
+        }
+
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+{% endblock %}

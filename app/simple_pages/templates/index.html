@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row border border-primary span6 carouselsizeset">
+        <!-- carousel start -->
+        <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="/pylint"><img src="{{ url_for('static', filename='images/pylint.png') }}"
+                                           class="d-block w-100" alt="pylint"></a>
+                </div>
+                <div class="carousel-item ">
+                    <a href="/aaa"><img src="{{ url_for('static', filename='images/aaa.png') }}" class="d-block w-100"
+                                        alt="aaa"></a></div>
+                <div class="carousel-item">
+                    <a href="/oops"><img src="{{ url_for('static', filename='images/oops.png') }}" class="d-block w-100"
+                                         alt="oops"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/solid"><img src="{{ url_for('static', filename='images/solid.png') }}"
+                                          class="d-block w-100" alt="solid"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/git"><img src="{{ url_for('static', filename='images/git.png') }}" class="d-block w-100"
+                                        alt="git"></a>
+                </div>
+                <div class="carousel-item ">
+                    <a href="/docker"><img src="{{ url_for('static', filename='images/docker.png') }}"
+                                           class="d-block w-100" alt="docker"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/flask"><img src="{{ url_for('static', filename='images/flask.png') }}"
+                                          class="d-block w-100" alt="flask"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/cicd"><img src="{{ url_for('static', filename='images/cicd.png') }}" class="d-block w-100"
+                                         alt="cicd"></a>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- carousel end -->
+    </div>
+
+    <!-- card row 1 -->
+    <div class="row class= mt-3 mb-3">
+        <!-- card row 1 - col 1 -->
+        <div class="col-sm">
+            <div class="card" href="#">
+                <div class="card-body">
+                    <h5 class="card-title">Pylint</h5>
+                    <p class="card-text">Pylint is a static code analysis tool written in Python for the purpose of
+                        analysis. It may check for programming flaws, implement coding standards best practices,
+                        discover code violations, and advise reworking. It is totally customisable by the user and has
+                        built-in specific routines for controlling particular errors and alarms within the user's code.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- card row 1 - col 1 end -->
+
+        <!-- card row 1 - col 2 -->
+        <div class="col-sm">
+            <div class="card" href="#">
+                <div class="card-body">
+                    <h5 class="card-title">AAA testing</h5>
+                    <p class="card-text">The AAA pattern is a pattern for structuring tests. It breaks each test down
+                        into three parts – Arrange, Act, and Assert – where each part is a step leading to the next. The
+                        <b>arrange</b> step sets up the test’s input values. The <b>act</b> step prompts the primary
+                        function being
+                        tested. And finally, the <b>assert</b> step verifies that the output of the function is what was
+                        expected.</p>
+                </div>
+            </div>
+        </div>
+        <!-- card row 1- col 2 end -->
+
+        <!-- card row 1- col 3 -->
+        <div class="col-sm">
+            <div class="card" href="#">
+                <div class="card-body">
+                    <h5 class="card-title">OOPs Concepts</h5>
+                    <p class="card-text">Object-Oriented Programming (OOP) uses "objects" to model realworld objects.
+                        Object-Oriented Programming (OOP) consist of following some important concepts referred to as
+                        the OOPS
+                        concepts.
+                    <ul>
+                        <li>Encapsulation</li>
+                        <li>Inheritance</li>
+                        <li>Polymorphism</li>
+                        <li>Abstraction</li>
+                    </ul>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <!-- card row 1- col 3 end -->
+
+        <!-- card row 1- col 4 -->
+        <div class="col-sm">
+            <div class="card" href="#">
+                <div class="card-body">
+                    <h5 class="card-title">SOLID principles</h5>
+                    <p class="card-text">SOLID is an acronym that stands for five object-oriented design principles that
+                        help you make the software more understandable, easier to maintain, and easier to extend.
+                    <ul>
+                        <li><b>S</b>ingle-responsibility</li>
+                        <li><b>O</b>pen-closed</li>
+                        <li><b>L</b>iskov Substitution</li>
+                        <li><b>I</b>nterface Segregation</li>
+                        <li><b>D</b>ependency Inversion</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- card row 1- col 4 end -->
+
+    </div>
+    <!-- card row 1 end -->
+
+    <!-- card row 2 -->
+    <div class="row class= mt-3 mb-3">
+        <!-- card row 2 col 1 -->
+        <div class="col-sm" style="height: available">
+            <div class="card" href="#">
+                <div class="card-body ">
+                    <h5 class="card-title">Git</h5>
+                    <p class="card-text">GIT is Free and open source Version Control System (VCS) is a software
+                        that helps software developers to work together and maintain a complete history of their work
+                        and also it comes under distributed version control system (DVCS).
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- card  row 2 col 1 end -->
+
+        <!-- card row 2 col 2 -->
+        <div class="col-sm">
+            <div class="card" href="#">
+                <div class="card-body">
+                    <h5 class="card-title">Docker</h5>
+                    <p class="card-text">Docker is a software platform that makes it easier to create, execute, manage,
+                        and distribute apps. It accomplishes this by virtualizing the operating system of the machine on
+                        which it is installed.</p>
+                </div>
+            </div>
+        </div>
+        <!-- card row 2 col 2 end -->
+
+        <!-- card row 2 col 3 -->
+        <div class="col-sm">
+            <div class="card" href="#">
+                <div class="card-body">
+                    <h5 class="card-title">Python/ Flask</h5>
+                    <p class="card-text">Flask is a Python-based web application framework. It belongs to the
+                        micro-framework category, which means it doesn't rely on external libraries. The Werkzeug WSGI
+                        toolkit and the Jinja2 template engine are the foundations of Flask.</p>
+                </div>
+            </div>
+        </div>
+        <!-- card row 2 col 3 end -->
+
+        <!-- card row 2 col 4 -->
+        <div class="col-sm">
+            <div class="card" href="#">
+                <div class="card-body">
+                    <h5 class="card-title">CI/CD</h5>
+                    <p class="card-text">A continuous integration/continuous delivery (CI/CD) pipeline is a set of
+                        procedures that must be followed in order to deliver a new version of software. Continuous
+                        integration and continuous delivery (CI/CD) pipelines are a DevOps or site reliability
+                        engineering (SRE) activity designed to optimize software delivery.</p>
+                </div>
+            </div>
+        </div>
+        <!-- card row 2 col 4 end -->
+    </div>
+    <!-- card row 2 end -->
+    <style>
+        body {
+            font-size: 120%;
+        }
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+
+
+{% endblock %}
